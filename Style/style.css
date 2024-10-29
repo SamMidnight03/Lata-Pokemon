@@ -1,0 +1,171 @@
+body{
+    margin: 0;
+    --position:0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#soda{
+    --width: 275px;
+    display: grid;
+    z-index: 1;
+}
+
+#soda >*{
+    width: var(--width);
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#soda .labels{
+    background: url(./img/Pokemon.jpg);
+    background-size: calc(var(--width)*3);
+
+    mask: url(./img/soda\ \(1\).svg);
+    mask-size: contain;
+    mix-blend-mode: multiply;
+
+    background-position-x: calc(var(--width)*-1*var(--position));
+    transition: background-position .4s ease-out ;
+}
+
+section{
+    position: fixed;
+    bottom: 0;
+    left: calc(-100vw * var(--position));
+    transition: left .45s ease-out ;
+    z-index: -1;
+
+    display: flex;
+}
+
+section.Pokemon article{
+    height: 100vh;
+    width: 100vw;
+    z-index: -2;
+    overflow: hidden;
+}
+
+section.Pokemon .items{
+    width: 100vw;
+    height: 100%;
+    animation: caida 1s ease-out;
+}
+
+
+
+section .Charmander{
+    background-color: #f88c20;
+}
+
+section .mimikyu{
+    background-color: #eae0c7;
+}
+
+section .Gengar{
+    background-color: #735f9c;
+}
+
+.title{
+    position:fixed;
+    text-align: center;
+    font-size: 15vw;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    mix-blend-mode: overlay;
+    color: #ffffff99;
+    animation: titulo 2s ease-out;
+}
+
+.items{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.items img{
+    height: 250px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    filter: drop-shadow( 0px 200px 20px #2828284a );
+    animation: Tipos-pokemon 2s ease-out infinite;
+    animation-delay: 40s;
+}
+
+article img:nth-child(1){
+    padding-top: 25vh;
+    --tipo: 0;
+}
+article img:nth-child(2){
+    padding-bottom: 25vh;
+    --tipo: 0;
+}
+article img:nth-child(3){
+    padding-top: 23vh;
+    --tipo: 0;
+}
+article img:nth-child(4){
+    padding-bottom: 25vh;
+    --tipo: 0;
+}
+
+@keyframes Tipos-pokemon {
+    from{
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    50%{   
+        transform: translate(0, 0) scale(0.98) rotate(3deg);
+    }
+    to{
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes caida{
+    from{
+        transform: translate(0, -500px);
+    }
+    to{
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes titulo{
+    from{
+        transform: translate(0, 500px);
+    }
+    to{
+        transform: translate(0, 0);
+    }
+}
+
+/*Botones*/
+
+#botones{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#left, #right{
+    background-color: #dcc794c7;
+    border-radius: 50%;
+    font-size: 3rem;
+    margin: 10px;
+    width: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
